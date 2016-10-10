@@ -4,11 +4,12 @@ import sys
 import zc
 import time
 import os
+import uuid
 
 from flask import Flask
 app=Flask(__name__)
 app.config.from_object('config')
-from app.models import User
+from app.models import User,Item
 from flask.ext.login import LoginManager
 from flask.ext.openid import OpenID
 # from config import basedir
@@ -47,8 +48,23 @@ if dbOpen:
     # root['users']['2']=User('2','Ben','bdbrown4@eagles.usi.edu')
     # transaction.commit()
 
+    # root['items']={}
+    # mower=Item(str(uuid.uuid1()),'Lawn Mower')
+    # eater=Item(str(uuid.uuid1()),'Weed Eater')
+    # root['items'][mower.id]=mower
+    # root['items'][eater.id]=eater
+    # mower.addModel('Honda')
+    # mower.addModel('Black & Decker')
+    # eater.addModel('Torro')
+    # eater.addModel('Echo')
+    # transaction.commit()
+
     for record in root['users']:
         user = root['users'][record]
         print user
+
+    for record in root['items']:
+        item = root['items'][record]
+        print item.item
 
 from app import views,models

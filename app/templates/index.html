@@ -2,10 +2,27 @@
 {% block content %}
 
 <h1>Hello, {{ user.nickname }}!</h1>
+<form action="" method="post" name="post">
+    {{ form.hidden_tag() }}
+    <p>{{form.item(size=30,maxlength=140)}}</p>
+    <p>
+    {% for error in form.item.errors %}
+    <span style="color:red;">[{{error}}]</span><br>
+    {%endfor%}
+    </p>
+    <p><input type="submit" value="Add Item"></p>
+</form>
 <p>Items of interest include:</p>
 <ul>
     {% for item in itemsOfInterest %}
-    <li>{{item.item}}</li>
+    <li>
+        <form action="" method="post" name="post">
+            {{itemsOfInterest[item].item}}
+            {{ delForm.hidden_tag() }}
+            <input type="hidden" value="{{ itemsOfInterest[item].id }}" name="id">
+            <input type="submit" value="Delete">
+        </form>
+    </li>
     {% endfor %}
 </ul>
 

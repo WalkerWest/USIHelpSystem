@@ -6,7 +6,8 @@ class TicketExample:
 
 class Item():
 
-    def __init__(self,item):
+    def __init__(self,id,item):
+        self.id=id
         self.item=item
         self.models=[]
 
