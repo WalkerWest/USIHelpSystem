@@ -17,6 +17,7 @@ lm=LoginManager()
 lm.init_app(app)
 lm.login_view='login'
 print lm
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 oid=OpenID(app,os.path.join(basedir,'tmp'))
 print oid
