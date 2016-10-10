@@ -9,7 +9,7 @@ import uuid
 from flask import Flask
 app=Flask(__name__)
 app.config.from_object('config')
-from app.models import User,Item
+from app.models import User,Item,Ticket
 from flask.ext.login import LoginManager
 from flask.ext.openid import OpenID
 # from config import basedir
@@ -39,6 +39,12 @@ if dbOpen:
     connection = db.open()
     root=connection.root()
 
+    # root['tickets']={}
+    # root['tickets']['tick1']=Ticket("Walker","2016-10-04","need help with Python")
+    # root['tickets']['tick2']=Ticket("USIHelpSystem","2016-10-03","need help with ODK")
+    # transaction.commit()
+
+    print "Printing Ticket objects"
     for record in root['tickets']:
         ticket=root['tickets'][record]
         print ticket.requestor
@@ -47,6 +53,11 @@ if dbOpen:
     # root['users']['1']=User('1','Walker','walker.west@gmail.com')
     # root['users']['2']=User('2','Ben','bdbrown4@eagles.usi.edu')
     # transaction.commit()
+
+    print "Printing User objects"
+    for record in root['users']:
+        user = root['users'][record]
+        print user
 
     # root['items']={}
     # mower=Item(str(uuid.uuid1()),'Lawn Mower')
@@ -59,10 +70,7 @@ if dbOpen:
     # eater.addModel('Echo')
     # transaction.commit()
 
-    for record in root['users']:
-        user = root['users'][record]
-        print user
-
+    print "Printing Item objects"
     for record in root['items']:
         item = root['items'][record]
         print item.item

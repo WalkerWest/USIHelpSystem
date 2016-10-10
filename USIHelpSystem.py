@@ -17,17 +17,6 @@
 
 from flask import Flask
 
-class Ticket:
-    def __init__(self,requestor,date,problem):
-        self.requestor=requestor
-        self.date=date
-        self.problem=problem
-
-#root['tickets']={}
-#root['tickets']['tick1']=Ticket("Walker","2016-10-04","need help with Python")
-#root['tickets']['tick2']=Ticket("USIHelpSystem","2016-10-03","need help with ODK")
-#transaction.commit()
-
 #from app import app
 # app.run(debug=True)
 

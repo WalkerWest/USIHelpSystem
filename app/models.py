@@ -1,4 +1,4 @@
-class TicketExample:
+class Ticket:
     def __init__(self,requestor,date,problem):
         self.requestor=requestor
         self.date=date
